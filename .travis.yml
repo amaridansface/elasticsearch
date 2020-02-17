@@ -1,3 +1,27 @@
 language: java
+install: true
 
-jdk: openjdk13
+
+dist: trusty
+jdk:
+  - openjdk13
+  - openjdk-ea
+
+
+matrix:
+  allow_failures:
+    - jdk: openjdk-ea
+
+branches:
+  only:
+  - master
+  - v7.6.0
+    
+
+script:
+  # - ./gradlew --continue clean build --scan -s -p modules/reindex
+  - ./gradlew --continue clean build --scan -s -p modules/ingest-geoip
+  - ./gradlew --continue clean build --scan -s -p modules/ingest-user-agent
+  - ./gradlew --continue clean build --scan -s -p modules/percolator
+  - ./gradlew --continue clean build --scan -s -p modules/rank-eval
+
