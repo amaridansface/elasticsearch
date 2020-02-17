@@ -1,7 +1,6 @@
 language: java
 install: true
 
-
 dist: trusty
 jdk:
   - openjdk13
@@ -19,7 +18,7 @@ branches:
     
 
 script:
-  # - ./gradlew --continue clean build --scan -s -p modules/reindex
+  - ./gradlew --continue clean build --scan -s -p modules/reindex
   - ./gradlew --continue clean build --scan -s -p modules/ingest-geoip
   - ./gradlew --continue clean build --scan -s -p modules/ingest-user-agent
   - ./gradlew --continue clean build --scan -s -p modules/percolator
